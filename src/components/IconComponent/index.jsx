@@ -19,7 +19,7 @@ const IconComponent = ({ icon, style, state, handleClick, handleDeleteAll, class
                             <Button
                                 handleDeleteAll={handleDeleteAll}
                             >
-                                Delete All Items
+                                Delete List
                             </Button>
                         </div>
                     </div>
