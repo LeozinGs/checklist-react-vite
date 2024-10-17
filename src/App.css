@@ -1,0 +1,9 @@
+.container {
+    display: grid;
+    grid-template-columns: 1fr min(85ch, 100%) 1fr;
+    padding: 1em 1em;
+}
+
+.container>* {
+    grid-column: 2;
+}

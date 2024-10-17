@@ -1,0 +1,6 @@
+.option-box {
+    position: absolute;
+    top: 10;
+    right: 0px;
+    z-index: 1;
+}
