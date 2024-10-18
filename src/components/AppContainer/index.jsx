@@ -20,13 +20,17 @@ const AppContainer = () => {
         setIsOpen(!isOpen);
     }
 
+    function setListSetValue() {
+        setList(checklist);
+        setValue('');
+    }
+
     function handleSubmit(event) {
         if (value !== ' ') {
             event.preventDefault();
             checklist.push(value.charAt(0).toUpperCase() + value.slice(1));
             localStorage.setItem('listLocal', JSON.stringify(checklist));
-            setList(checklist);
-            setValue('');
+            setListSetValue();
         } else {
             alert('This item is not valid')
         }
@@ -35,15 +39,13 @@ const AppContainer = () => {
     function handleDeleteAll() {
         localStorage.setItem('listLocal', JSON.stringify([]));
         checklist = [];
-        setList(checklist);
-        setValue('');
+        setListSetValue();
     }
 
     function handleDeleteItem(index) {
         checklist.splice(index, 1);
         localStorage.setItem('listLocal', JSON.stringify(checklist));
-        setList(checklist);
-        setValue('');
+        setListSetValue();
     }
 
     function handleEditItem(index) {
@@ -51,8 +53,7 @@ const AppContainer = () => {
         checklist.splice(index, 1);
         checklist.splice(index, 0, (newValue.charAt(0).toUpperCase() + newValue.slice(1)));
         localStorage.setItem('listLocal', JSON.stringify(checklist));
-        setList(checklist);
-        setValue('');
+        setListSetValue();
     }
 
     return (
