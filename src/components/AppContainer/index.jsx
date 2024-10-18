@@ -82,7 +82,7 @@ const AppContainer = () => {
                         <Button>Add</Button>
                     </div>
                 </form>
-                <ul className="tree-view">
+                <ul className="tree-view" style={{ paddingTop: 2 }}>
                     <div className="list-title">
                         <p>Items</p>
                         <IconComponent
