@@ -1,48 +1,43 @@
 .window {
     display: flex;
     flex-direction: column;
-    max-height: 95vh;
 }
 
 .window-body {
     display: flex;
     flex-direction: column;
     height: 100%;
+    max-height: 90vh;
 }
 
 .tree-view {
-    position: relative;
-    flex-grow: 1;
+    flex: 1;
     overflow: auto;
-    max-height: 76vh;
+    max-height: 100%;
 }
 
-.list-title {
+.list-title_text {
     display: flex;
     justify-content: space-between;
     font-size: 22px;
     margin-bottom: .5em;
     padding: 1rem;
-    position: sticky;
-    top: 0;
-    background-color: #fff;
 }
 
 .list-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 1rem 0;
     font-size: 14px;
     font-weight: 600;
-    padding: .5em 0;
 }
 
 .options {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
+    gap: 15px;
     cursor: pointer;
+
 }
 
 .field-row {
@@ -57,6 +52,17 @@
 }
 
 .field-row label {
-    font-size: 14px;
+    font-size: 1.5em;
     font-weight: 600;
+}
+
+.status-bar-field {
+    padding: .5em;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+#text-input {
+    height: 2em;
+    font-size: 1.5em;
 }
