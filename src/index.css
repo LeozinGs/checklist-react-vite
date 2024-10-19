@@ -1,6 +1,12 @@
 :root {
     --font-family: 'Microsoft Sans Serif';
 
+    --clr-bottom-right: #ffffff;
+    --clr-bottom-right2: #dfdfdf;
+    --clr-top-left: #0a0a0a;
+    --clr-top-left2: #808080;
+
+    --clr-background: #c0c0c0;
 }
 
 * {

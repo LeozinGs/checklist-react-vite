@@ -1,0 +1,31 @@
+.window-frame {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: .5em;
+    background-color: var(--clr-background);
+    position: relative;
+
+    border-top: 1px solid var(--clr-bottom-right);
+    border-right: 1px solid var(--clr-top-left);
+    border-bottom: 1px solid var(--clr-top-left);
+    border-left: 1px solid var(--clr-bottom-right);
+}
+
+.window-frame::after {
+    content: "";
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    z-index: 1;
+
+    border-top: 1px solid var(--clr-bottom-right2);
+    border-right: 1px solid var(--clr-top-left2);
+    border-bottom: 1px solid var(--clr-top-left2);
+    border-left: 1px solid var(--clr-bottom-right2);
+}

@@ -3,6 +3,8 @@ import IconComponent from '../IconComponent';
 import Button from '../Button';
 import Title from '../Title';
 import './styles.css';
+import Content from '../Content';
+import Window from '../Window';
 
 const AppContainer = () => {
 
@@ -77,7 +79,7 @@ const AppContainer = () => {
     function handleEditAmount(index) {
         const newAmount = prompt('Enter the price for your item:', list[index].amount);
         if (newAmount !== null && !isNaN(newAmount) && newAmount.trim() !== '') {
-            checklist[index].amount = Math.round(parseFloat(newAmount) * 100) / 100;  // Atualiza o preço
+            checklist[index].amount = parseFloat(newAmount).toFixed(2);  // Atualiza o preço
             localStorage.setItem('listLocal', JSON.stringify(checklist));
             setListSetValue();
         }
@@ -95,16 +97,16 @@ const AppContainer = () => {
     const totalAmount = list.reduce((total, item) => total + (item.amount * item.quantity || 0), 0);
 
     return (
-        <div className="window" style={{ width: '100%', minHeight: '95vh' }}>
-            <div className="title-bar">
-                <div className="title-bar-text">Checklist</div>
-                <div className="title-bar-controls">
-                    <button aria-label="Minimize"></button>
-                    <button aria-label="Maximize"></button>
-                    <button aria-label="Close"></button>
+        <Window>
+            <div className="holder">
+                <div className="title-bar">
+                    <div className="title-bar-text">Checklist</div>
+                    <div className="title-bar-controls">
+                        <button aria-label="Minimize"></button>
+                        <button aria-label="Maximize"></button>
+                        <button aria-label="Close"></button>
+                    </div>
                 </div>
-            </div>
-            <div className="window-body">
                 <Title>Checklist App</Title>
                 <form onSubmit={handleSubmit}>
                     <div className="field-row">
@@ -120,7 +122,7 @@ const AppContainer = () => {
                         <Button>Add</Button>
                     </div>
                 </form>
-                <ul className="tree-view" style={{ paddingTop: 2 }}>
+                <Content>
                     <div className="list-title">
                         <div className='list-title_text'>
                             <p>Items</p>
@@ -172,14 +174,14 @@ const AppContainer = () => {
                         :
                         []
                     }
-                </ul>
+                </Content>
+                <div className="status-bar">
+                    <p className="status-bar-field">Press F1 for help</p>
+                    <p className="status-bar-field">Items: {list.length}</p>
+                    <p className="status-bar-field">Total: {totalAmount.toFixed(2)}</p>
+                </div>
             </div>
-            <div className="status-bar">
-                <p className="status-bar-field">Press F1 for help</p>
-                <p className="status-bar-field">Items: {list.length}</p>
-                <p className="status-bar-field">Total: {totalAmount.toFixed(2)}</p>
-            </div>
-        </div>
+        </Window>
     );
 }
 

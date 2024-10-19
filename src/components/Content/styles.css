@@ -1,0 +1,30 @@
+.content {
+    padding: 0 2em;
+    margin: 1em 0;
+    background-color: #fff;
+    flex: 1;
+    position: relative;
+    overflow: auto;
+
+    border-top: 1px solid var(--clr-top-left2);
+    border-right: 1px solid var(--clr-bottom-right);
+    border-bottom: 1px solid var(--clr-bottom-right);
+    border-left: 1px solid var(--clr-top-left2);
+}
+
+.content::after {
+    content: "";
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+
+    border-top: 1px solid var(--clr-top-left);
+    border-right: 1px solid var(--clr-bottom-right2);
+    border-bottom: 1px solid var(--clr-bottom-right2);
+    border-left: 1px solid var(--clr-top-left);
+}
