@@ -1,8 +1,8 @@
+import './styles.css';
 import { useEffect, useState } from 'react';
 import IconComponent from '../IconComponent';
 import Button from '../Button';
 import Title from '../Title';
-import './styles.css';
 import Content from '../Content';
 import Window from '../Window';
 
