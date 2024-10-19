@@ -33,8 +33,8 @@ const AppContainer = () => {
         if (value !== ' ') {
             const newItem = {
                 name: value.charAt(0).toUpperCase() + value.slice(1),
-                amount: null, // O preço começa como nulo
-                quantity: 1 // A quantidade começa nula
+                amount: 0, // O preço começa como 0 por que não faz sentido ser nulo
+                quantity: 1 // A quantidade começa em 1 para não bugar o preço a ser colocado
             };
             checklist.push(newItem);
             localStorage.setItem('listLocal', JSON.stringify(checklist));
@@ -43,17 +43,6 @@ const AppContainer = () => {
             alert('Please enter a valid item.');
         }
     }
-
-    // function handleSubmit(event) {
-    //     if (value !== ' ') {
-    //         event.preventDefault();
-    //         checklist.push(value.charAt(0).toUpperCase() + value.slice(1));
-    //         localStorage.setItem('listLocal', JSON.stringify(checklist));
-    //         setListSetValue();
-    //     } else {
-    //         alert('This item is not valid')
-    //     }
-    // }
 
     function handleDeleteAll() {
         localStorage.setItem('listLocal', JSON.stringify([]));
@@ -79,7 +68,7 @@ const AppContainer = () => {
     function handleEditAmount(index) {
         const newAmount = prompt('Enter the price for your item:', list[index].amount);
         if (newAmount !== null && !isNaN(newAmount) && newAmount.trim() !== '') {
-            checklist[index].amount = parseFloat(newAmount).toFixed(2);  // Atualiza o preço
+            checklist[index].amount = (Math.round(parseFloat(newAmount) * 100) / 100).toFixed(2);  // Atualiza o preço
             localStorage.setItem('listLocal', JSON.stringify(checklist));
             setListSetValue();
         }
@@ -176,7 +165,7 @@ const AppContainer = () => {
                     }
                 </Content>
                 <div className="status-bar">
-                    <p className="status-bar-field">Press F1 for help</p>
+                    <p className="status-bar-field">Total area</p>
                     <p className="status-bar-field">Items: {list.length}</p>
                     <p className="status-bar-field">Total: {totalAmount.toFixed(2)}</p>
                 </div>
