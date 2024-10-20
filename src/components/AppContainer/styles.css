@@ -6,6 +6,7 @@
     padding: 1rem;
     position: relative;
     z-index: 10;
+    user-select: none;
 }
 
 .list-item {
@@ -17,6 +18,7 @@
     font-weight: 600;
     position: relative;
     z-index: 1;
+    user-select: none;
 }
 
 .options {
@@ -31,6 +33,7 @@
     margin-bottom: 1em;
     display: flex;
     justify-content: center;
+    user-select: none;
 }
 
 .field-row input {
@@ -46,6 +49,7 @@
     padding: .5em;
     font-size: 16px;
     font-weight: 600;
+    user-select: none;
 }
 
 #text-input {
