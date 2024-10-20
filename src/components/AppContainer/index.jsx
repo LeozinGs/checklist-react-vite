@@ -86,91 +86,111 @@ const AppContainer = () => {
     const totalAmount = list.reduce((total, item) => total + (item.amount * item.quantity || 0), 0);
 
     return (
-        <Window>
-            <div className="holder">
-                <div className="title-bar">
-                    <div className="title-bar-text">Checklist</div>
-                    <div className="title-bar-controls">
-                        <button aria-label="Minimize"></button>
-                        <button aria-label="Maximize"></button>
-                        <button aria-label="Close"></button>
-                    </div>
-                </div>
-                <Title>Checklist App</Title>
-                <form onSubmit={handleSubmit}>
-                    <div className="field-row">
-                        <label htmlFor="text-input">Item</label>
-                        <input
-                            required={true}
-                            id='text-input'
-                            type={'text'}
-                            placeholder={'Describe your item.'}
-                            value={value}
-                            onChange={(e) => setValue(e.target.value)}
-                        />
-                        <Button>Add</Button>
-                    </div>
-                </form>
-                <Content>
-                    <div className="list-title">
-                        <div className='list-title_text'>
-                            <p>Items</p>
-                            <IconComponent
-                                icon={'more_vert'}
-                                style={{ cursor: 'pointer', position: 'relative', userSelect: 'none' }}
-                                state={isOpen}
-                                handleClick={handleClick}
-                                handleDeleteAll={handleDeleteAll}
-                            />
+        <>
+            <Window>
+                <div className="holder">
+                    <div className="title-bar">
+                        <div className="title-bar-text">Checklist</div>
+                        <div className="title-bar-controls">
+                            <button aria-label="Minimize"></button>
+                            <button aria-label="Maximize"></button>
+                            <button aria-label="Close"></button>
                         </div>
-                        <hr />
                     </div>
-                    {list ?
-                        list.map((item, index) => (
-                            <>
-                                <li className="list-item" key={index}>
-                                    {item.name} - {item.quantity !== null ? item.quantity : '0'} - {item.amount !== null ? 'R$' + item.amount * item.quantity : 'R$0'}
-                                    <div className="options">
-                                        <IconComponent
-                                            handleClick={() => handleEditQuantity(index)}
-                                            className={'quantity'}
-                                            icon={'add_circle'}
-                                            style={{ fontSize: 20 }}
-                                        />
-                                        <IconComponent
-                                            handleClick={() => handleEditAmount(index)}
-                                            className={'price'}
-                                            icon={'sell'}
-                                            style={{ fontSize: 20 }}
-                                        />
-                                        <IconComponent
-                                            handleClick={() => handleEditItem(index)}
-                                            className={'edit'}
-                                            icon={'edit'}
-                                            style={{ fontSize: 20 }}
-                                        />
-                                        <IconComponent
-                                            handleClick={() => handleDeleteItem(index)}
-                                            className={'delete'}
-                                            icon={'delete'}
-                                            style={{ fontSize: 20 }}
-                                        />
-                                    </div>
-                                </li>
-                                <hr />
-                            </>
-                        ))
-                        :
-                        []
-                    }
-                </Content>
-                <div className="status-bar">
-                    <p className="status-bar-field">Total area</p>
-                    <p className="status-bar-field">Items: {list.length}</p>
-                    <p className="status-bar-field">Total: {totalAmount.toFixed(2)}</p>
+                    <Title>Checklist App</Title>
+                    <form onSubmit={handleSubmit}>
+                        <div className="field-row">
+                            <label htmlFor="text-input">Item</label>
+                            <input
+                                required={true}
+                                id='text-input'
+                                type={'text'}
+                                placeholder={'Describe your item.'}
+                                value={value}
+                                onChange={(e) => setValue(e.target.value)}
+                            />
+                            <Button>Add</Button>
+                        </div>
+                    </form>
+                    <Content>
+                        <div className="list-title">
+                            <div className='list-title_text'>
+                                <p>Items</p>
+                                <i
+                                    className="material-icons vert-menu"
+                                    onClick={() => handleClick()}
+                                >
+                                    more_vert
+                                    {isOpen ?
+                                        <div className="window option-box" style={{ width: 150, textAlign: 'center' }}>
+                                            <div className="title-bar">
+                                                <div className="title-bar-text">Delete List</div>
+                                                <div className="title-bar-controls">
+                                                    <button aria-label="Close"></button>
+                                                </div>
+                                            </div>
+                                            <div className="window-body">
+                                                <Button
+                                                    handleDeleteAll={handleDeleteAll}
+                                                >
+                                                    Delete List
+                                                </Button>
+                                            </div>
+                                        </div>
+                                        :
+                                        null
+                                    }
+                                </i>
+                            </div>
+                            <hr />
+                        </div>
+                        {list ?
+                            list.map((item, index) => (
+                                <>
+                                    <li className="list-item" key={index}>
+                                        {item.name} - {item.quantity !== null ? item.quantity : '0'} - {item.amount !== null ? 'R$' + item.amount * item.quantity : 'R$0'}
+                                        <div className="options">
+                                            <IconComponent
+                                                handleClick={() => handleEditQuantity(index)}
+                                                className={'quantity'}
+                                                icon={'add_circle'}
+                                                style={{ fontSize: 20 }}
+                                            />
+                                            <IconComponent
+                                                handleClick={() => handleEditAmount(index)}
+                                                className={'price'}
+                                                icon={'sell'}
+                                                style={{ fontSize: 20 }}
+                                            />
+                                            <IconComponent
+                                                handleClick={() => handleEditItem(index)}
+                                                className={'edit'}
+                                                icon={'edit'}
+                                                style={{ fontSize: 20 }}
+                                            />
+                                            <IconComponent
+                                                handleClick={() => handleDeleteItem(index)}
+                                                className={'delete'}
+                                                icon={'delete'}
+                                                style={{ fontSize: 20 }}
+                                            />
+                                        </div>
+                                    </li>
+                                    <hr />
+                                </>
+                            ))
+                            :
+                            []
+                        }
+                    </Content>
+                    <div className="status-bar">
+                        <p className="status-bar-field">Total area</p>
+                        <p className="status-bar-field">Items: {list.length}</p>
+                        <p className="status-bar-field">Total: {totalAmount.toFixed(2)}</p>
+                    </div>
                 </div>
-            </div>
-        </Window>
+            </Window>
+        </>
     );
 }
 

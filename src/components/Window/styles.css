@@ -1,8 +1,9 @@
 .window-frame {
     height: 100%;
+    max-height: 100vh;
     display: flex;
     flex-direction: column;
-    padding: .5em;
+    padding: .2em .5em;
     background-color: var(--clr-background);
     position: relative;
 
